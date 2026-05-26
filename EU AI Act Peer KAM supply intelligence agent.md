@@ -129,17 +129,61 @@ Escalation needed: No, unless the channel access review reveals a broader exposu
 
 ### Section 5: Overall Recommendation
 
-**Clear to proceed — with two conditions.**
+## Phase 5: Debrief conversation
 
-The system is minimal risk under the EU AI Act and does not present any blocking compliance findings under the regulation itself. The two conditions relate to GDPR rather than the AI Act, and both are addressable without structural changes to the system. The deployer should confirm that a Data Processing Agreement with OpenAI is in place covering the personal data fields transmitted to the API, and should verify that Slack channel access controls limit output visibility to authorised users. Neither condition requires significant technical work, but both should be resolved before the system handles live production data.
+We went together through the audited results.
 
-| Step | Auditor notes | Builder notes | Agreed / disagreed? | Why it matters |
-|---|---|---|---|---|
-| Auditor presents | Classified the system as minimal risk. No Article 5 prohibited practices, no Annex III category triggered. Main findings: GDPR exposure from Salesforce data passed to OpenAI API, no systematic output quality safeguard, and Slack access controls unconfirmed. | | | An external auditor without builder context may classify more conservatively or miss operational details that change the risk picture. Presenting the audit before the builder responds tests whether the classification holds up independently. |
-| Builder responds | The brief does not confirm whether a DPA with OpenAI is in place, whether the KAM name field appears in outputs, or whether Slack channels are restricted to authorised users. These were flagged as clarifying questions requiring a response before finalising the audit. | | | Builder context often resolves ambiguities that an external auditor has to assume. If the builder's response changes any finding, that gap in the brief is itself a compliance risk — undocumented systems are harder to audit and harder to defend. |
-| Compare classifications | Auditor: minimal risk. | | | If the classifications differ, the reason is usually either a difference in regulatory interpretation or information that did not make it into the brief. Both are useful findings: the first reveals genuine ambiguity in the regulation, the second reveals a documentation gap. |
-| Compare gap lists | Auditor identified: (1) GDPR — personal data to OpenAI API, severity significant; (2) no output quality safeguard, severity minor; (3) Slack access controls unconfirmed, severity minor. | | | Gaps that appear in the external audit but not the self-audit reveal builder blind spots. Gaps that appear in the self-audit but not the external audit reveal brief gaps — things the builder knew but did not document. Both directions matter. |
-| Joint closing note | | | | The closing note captures what the debrief itself revealed about the difference between auditing your own work and auditing someone else's. It is the meta-finding of the exercise: not what the system does wrong, but what the audit process surfaces that neither party could have reached alone. |
+**Auditor presents**
+
+I classified the KAM Supply Intelligence Agent as minimal risk. No Article 5 prohibited
+practices and no Annex III category triggered. I identified three findings: GDPR exposure
+from Salesforce data passed to the OpenAI API, no systematic output quality safeguard, and
+Slack access controls unconfirmed.
+
+**Builder responds**
+
+Dilia confirmed the GDPR exposure, as the data passed to OpenAI comes directly from
+Salesforce. She clarified that error handling is already in place and errors are surfaced
+in Slack, but acknowledged there is no caveat for queries that succeed but return incomplete
+data. She also confirmed that Slack access controls need to be implemented.
+
+**Compare classifications**
+
+Both auditor and builder reached minimal risk independently. The classification was aligned.
+
+**Compare gap lists**
+
+The auditor identified three gaps: GDPR exposure from Salesforce data passed to the OpenAI
+API, no systematic output quality safeguard, and Slack access controls unconfirmed. The
+builder identified three gaps: GDPR exposure, no AI-generated content watermark or
+disclosure, and no log retention policy. Both surfaced the GDPR gap independently. The
+external audit caught operational risks around output quality and access controls that the
+self-audit had not flagged. The self-audit caught disclosure and retention obligations that
+the external audit had not surfaced from the brief alone.
+
+**Joint closing note**
+
+Having both perspectives clearly revealed gaps from different angles. Auditing your own work
+and auditing someone else's exposed different blind spots and led to a more complete
+assessment than either review could have produced alone.
+
+**Reinforce**
+
+The debrief revealed that some clarifying questions were only visible once both perspectives
+were compared. A useful follow-up is to note which findings were initially missed in the
+self-audit and which became clearer after the exchange.
+
+**Stretch**
+
+One significant finding to operationalize would be the GDPR exposure from Salesforce data
+passed to the OpenAI API.
+
+| Item | Draft answer |
+|---|---|
+| Deliverable | Data mapping exercise, DPA confirmation with OpenAI, and data minimisation review of fields passed to the LLM |
+| Responsible owner | Builder / Data Protection Officer |
+| Timeline | 1-2 working days for data mapping, plus legal review for DPA confirmation |
+| Evidence of closure | Documented field mapping, confirmed DPA with OpenAI, and updated prompt excluding unnecessary personal data fields |
 
 ---
 
@@ -148,7 +192,3 @@ The system is minimal risk under the EU AI Act and does not present any blocking
 This report is a first-pass compliance assessment prepared for educational and peer review purposes. It is not a legal opinion, a conformity assessment, or a certification of any kind. It does not constitute advice from a qualified lawyer or data protection specialist. The conclusions in this report should be verified with legal counsel before any production deployment or EU market placement.
 
 ---
-
-## Phase 5 — Debrief Closing Note
-
-*To be completed jointly with Dilia after the debrief conversation.*
