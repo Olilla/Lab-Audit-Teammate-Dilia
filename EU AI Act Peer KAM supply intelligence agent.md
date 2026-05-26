@@ -133,25 +133,33 @@ Escalation needed: No, unless the channel access review reveals a broader exposu
 
 We went together through the audited results.
 
-**Auditor presents**
+---
+
+### Auditor presents
 
 I classified the KAM Supply Intelligence Agent as minimal risk. No Article 5 prohibited
 practices and no Annex III category triggered. I identified three findings: GDPR exposure
 from Salesforce data passed to the OpenAI API, no systematic output quality safeguard, and
 Slack access controls unconfirmed.
 
-**Builder responds**
+---
+
+### Builder responds
 
 Dilia confirmed the GDPR exposure, as the data passed to OpenAI comes directly from
 Salesforce. She clarified that error handling is already in place and errors are surfaced
 in Slack, but acknowledged there is no caveat for queries that succeed but return incomplete
 data. She also confirmed that Slack access controls need to be implemented.
 
-**Compare classifications**
+---
+
+### Compare classifications
 
 Both auditor and builder reached minimal risk independently. The classification was aligned.
 
-**Compare gap lists**
+---
+
+### Compare gap lists
 
 The auditor identified three gaps: GDPR exposure from Salesforce data passed to the OpenAI
 API, no systematic output quality safeguard, and Slack access controls unconfirmed. The
@@ -161,19 +169,25 @@ external audit caught operational risks around output quality and access control
 self-audit had not flagged. The self-audit caught disclosure and retention obligations that
 the external audit had not surfaced from the brief alone.
 
-**Joint closing note**
+---
+
+### Joint closing note
 
 Having both perspectives clearly revealed gaps from different angles. Auditing your own work
 and auditing someone else's exposed different blind spots and led to a more complete
 assessment than either review could have produced alone.
 
-**Reinforce**
+---
+
+## Reinforce
 
 The debrief revealed that some clarifying questions were only visible once both perspectives
 were compared. A useful follow-up is to note which findings were initially missed in the
 self-audit and which became clearer after the exchange.
 
-**Stretch**
+---
+
+## Stretch
 
 One significant finding to operationalize would be the GDPR exposure from Salesforce data
 passed to the OpenAI API.
