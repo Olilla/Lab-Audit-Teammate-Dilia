@@ -133,6 +133,14 @@ Escalation needed: No, unless the channel access review reveals a broader exposu
 
 The system is minimal risk under the EU AI Act and does not present any blocking compliance findings under the regulation itself. The two conditions relate to GDPR rather than the AI Act, and both are addressable without structural changes to the system. The deployer should confirm that a Data Processing Agreement with OpenAI is in place covering the personal data fields transmitted to the API, and should verify that Slack channel access controls limit output visibility to authorised users. Neither condition requires significant technical work, but both should be resolved before the system handles live production data.
 
+| Step | Auditor notes | Builder notes | Agreed / disagreed? | Why it matters |
+|---|---|---|---|---|
+| Auditor presents | Classified the system as minimal risk. No Article 5 prohibited practices, no Annex III category triggered. Main findings: GDPR exposure from Salesforce data passed to OpenAI API, no systematic output quality safeguard, and Slack access controls unconfirmed. | | | |
+| Builder responds | The brief does not confirm whether a DPA with OpenAI is in place, whether the KAM name field appears in outputs, or whether Slack channels are restricted to authorised users. These were flagged as the three clarifying questions requiring a response before finalising the audit. | | | |
+| Compare classifications | Auditor: minimal risk. | | | Did the builder's self-audit reach the same tier? If not, what additional context changes the classification? |
+| Compare gap lists | Auditor identified: (1) GDPR — personal data to OpenAI API, severity significant; (2) no output quality safeguard, severity minor; (3) Slack access controls unconfirmed, severity minor. | | | What did the self-audit catch that the external audit missed, and vice versa? |
+| Joint closing note | | | | |
+
 ---
 
 ### Section 6: What This Report Is Not
